@@ -24,10 +24,12 @@
 # 3. Необходимо спарсить цены на диваны с сайта divan.ru в csv файл, обработать данные, найти среднюю цену и вывести ее, а также сделать гистограмму цен на диваны
 
 import matplotlib.pyplot as plt
-from selenium import webdriver
 import time
 import pandas as pd
 import numpy as np
+import csv
+from selenium import webdriver
+from selenium.webdriver.common.by import By
 
 
 # Параметры нормального распределения
@@ -81,7 +83,7 @@ prices = []
 product_elements = browser.find_elements(By.CLASS_NAME, '_Ud0k')
 
 for price_element in product_elements:
-    prices.append(price_element.text.strip())
+    prices.append(price_element.find_element(By.CSS_SELECTOR, 'span.ui-LD-ZU').text)
 
 browser.quit()
 
