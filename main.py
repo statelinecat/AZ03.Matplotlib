@@ -78,7 +78,7 @@ browser.get(url)
 time.sleep(5)  # Даем время для загрузки страницы
 
 prices = []
-product_elements = browser.find_elements_by_css_selector('.product-card__price')  # Настройте селектор в соответствии с фактической структурой
+product_elements = browser.find_elements(By.CLASS_NAME, '_Ud0k')
 
 for price_element in product_elements:
     prices.append(price_element.text.strip())
